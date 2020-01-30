@@ -7,9 +7,10 @@ module.exports = (app, db) => {
     })
   
     app.get('/authors', async (req, res) => {
-      await db.Author.findAll(
-        {attributes: ['id', 'firstName', 'lastName']}
-      ).then((result) => {
+      await db.Author.aggregate([
+        {$match: {}},
+        {$project: { _id: 1, firstName: 1, lastName: 1 }}
+      ]).then((result) => {
         return res.json(result)
       })
     })
