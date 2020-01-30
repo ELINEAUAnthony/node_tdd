@@ -5,7 +5,7 @@ console.log(env);
 const config = require(__dirname + '/../config/config');
 const db = require('mongoose');
 
-db.connect(`mongodb://localhost:27017/${config.data}`, (err) => {
+db.connect(`mongodb://localhost:27017/${config.database}`, (err) => {
   if (err) throw err
   console.log('mongodb successfully connected.')
 })

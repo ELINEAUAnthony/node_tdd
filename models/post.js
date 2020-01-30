@@ -1,11 +1,9 @@
 'use strict';
-module.exports = (sequelize, DataTypes) => {
-  const Post = sequelize.define('Post', {
-    title: DataTypes.STRING,
-    content: DataTypes.TEXT
-  }, {});
-  Post.associate = (models) => {
-    Post.belongsTo(models.Author)
-  };
-  return Post;
-};
+
+const PostSchema = new mongoose.Schema({
+  title: String,
+  content: String,
+  authorId: {type: mongoose.Schema.Types.ObjectId, ref: 'authors'},
+})
+
+module.exports = mongoose.model('posts', PostSchema)
