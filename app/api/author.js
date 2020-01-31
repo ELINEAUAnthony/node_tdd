@@ -11,6 +11,7 @@ module.exports = (app, db) => {
         {$match: {}},
         {$project: { _id: 1, firstName: 1, lastName: 1 }}
       ]).then((result) => {
+        res.header('Content-Type', 'application/vnd.api+json')
         return res.json(result)
       })
     })
