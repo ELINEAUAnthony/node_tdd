@@ -3,7 +3,7 @@ module.exports = (app, db) => {
       await db.Post.create({
         title: req.body.title,
         content: req.body.content,
-        AuthorId: req.body.AuthorId,
+        authorId: req.body.authorId,
       }).then((result) => res.json(result))
     })
   }
